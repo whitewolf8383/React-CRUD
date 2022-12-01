@@ -1,0 +1,178 @@
+/* font-family: 'Inria Serif', serif;
+*  font-family: 'Inter', sans-serif;
+*  font-family: 'Irish Grover', cursive;
+*  font-family: 'Poppins', sans-serif;
+*/
+
+.NavBar {
+  background-color: #195EC7;
+  color: white;
+  height: 75px;
+}
+
+.NavBar__nav-display {
+  margin: auto;
+  padding: 20px 15px;
+  width: 1135px;
+}
+
+.NavBar__nav-display__title {
+  display: inline;
+  font-family: 'Irish Grover', cursive;
+  font-size: 30px;
+  font-weight: 400;
+  float: left;
+}
+
+.NavBar__nav-display__list {
+  display: inline;
+  list-style-type: none;
+  float: right;
+}
+
+.NavBar__nav-display__list__item {
+  display: inline;
+}
+
+.NavBar__nav-display__list__link {
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  float: left;
+  margin: 5px 15px 0 15px;
+  text-decoration: none;
+}
+
+.Login, .CreateAccount, .ErrorPage, .UserUpdate {
+  margin: auto;
+  text-align: center;
+  width: 500px;
+}
+
+.Login__h2, .CreateAccount__h2, .UserInfo__h2, .ErrorPage__h2, .UserUpdate__h2 {
+  font-family: 'Inria Serif', serif;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 55px;
+}
+
+.Login__form__input, .CreateAccount__form__input, .UserUpdate__form__input {
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 5px;
+  box-shadow: 4px 4px 7px 0 rgba(0,0,0,0.25);
+  display: block;
+  font-family: 'Poppins', sans-serif;
+  height: 50px;
+  margin: 20px auto;
+  padding: 15px;
+  width: 300px;
+}
+
+.Login__btn, .UserUpdate__update-btn {
+  background-color: #32BD40;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 50px;
+  width: 170px;
+}
+
+.CreateAccount__create-btn {
+  background-color: #32BD40;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 15px;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 50px;
+  margin: auto;
+  width: 230px;
+}
+
+.CreateAccount__cancel-btn, .UserUpdate__cancel-btn {
+  background-color: #D63C3C;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 15px;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 50px;
+  margin: 15px auto;
+  width: 170px;
+}
+
+.UserInfo {
+  margin: auto;
+  text-align: center;
+  width: 1000px;
+}
+
+.UserInfo__btn {
+  background-color: #195EC7;
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 25px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  height: 60px;
+  margin: 15px;
+  width: 250px;
+}
+
+.UserInfo__display {
+  border: 1px solid rgba(0,0,0,0.75);
+  border-radius: 5px;
+  box-shadow: 4px 4px 7px 0 rgba(0,0,0,0.25);
+  min-height: 300px;
+  max-height: 450px;
+  padding: 15px;
+  text-align: left;
+  width: 960px;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.UserInfo__display__div {
+  border-bottom: 1px solid black;
+}
+
+.UserInfo__display__heading {
+  display: inline;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  padding-right: 50px;
+}
+
+.User {
+  border-bottom: 1px solid rgba(0,0,0,0.25);
+  height: 60px;
+  padding: 20px 15px;
+}
+
+.User__p {
+  display: inline;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  margin-right: 95px;
+}
+
+.User__edit-btn {
+  background-color: #195EC7;
+  border-radius: 15px;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  float: right;
+  height: 50px;
+  margin-top: -15px;
+  width: 170px;
+}
