@@ -1,20 +1,18 @@
-import React, { useState } from 'react';
-import { Link, redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
-function NavBar() {
-  const [userEmail, setUserEmail] = useState('')
-  const [loggedIn, setLoggedIn] = useState(false)
+function NavBar(props) {
+  const [userEmail, setUserEmail] = useState(props.userEmail);
+  const [loggedIn, setLoggedIn] = useState(props.loggedIn);
+  const [user, setUser] = useState({});
 
-  if (!loggedIn) {
-    redirect('/');
-  }
+  const navigate = useNavigate();
 
-  const handleUserEmail = () => {
-    setUserEmail = '';
-  }
-
-  const handleLoggedIn = () => {
-    setLoggedIn = false;
+  function handleLogout() {
+    sessionStorage.removeItem('user')
+    sessionStorage.removeItem('targetUser')
+    setLoggedIn(false);
+    navigate('/');
   }
 
   return (
@@ -25,6 +23,7 @@ function NavBar() {
           <li className='NavBar__nav-display__list__item'>
             <Link
               className='NavBar__nav-display__list__link'
+              style={{display: (loggedIn) ? 'inline-block' : 'none'}}
               to='/userinfo'
             >Home</Link>
           </li>
@@ -38,13 +37,14 @@ function NavBar() {
           <li className='NavBar__nav-display__list__item'>
             <Link
               className='NavBar__nav-display__list__link'
+              onClick={handleLogout}
               to='/'
             >{loggedIn ? 'Logout' : 'Login'}</Link>
           </li>
           <li className='NavBar__nav-display__list__item'>
             <Link
               className='NavBar__nav-display__list__link'
-              to='/'
+              // to='/'
             >{userEmail}</Link>
           </li>
         </ul>

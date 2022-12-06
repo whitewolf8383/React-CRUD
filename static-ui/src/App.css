@@ -80,6 +80,14 @@
   width: 170px;
 }
 
+.Login__error, .UserUpdate__error, .CreateAccount__error {
+  color: #D63C3C;
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
 .CreateAccount__create-btn {
   background-color: #32BD40;
   border: 1px solid rgba(0,0,0,0.75);

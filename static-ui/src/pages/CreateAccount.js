@@ -1,14 +1,75 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 function CreateAccount(props) {
+  const navigate = useNavigate();
+  
+  const [userName, setUserName] = useState('');
+  const [userPhoneNumber, setUserPhoneNumber] = useState('');
+  const [userCity, setUserCity] = useState('');
+  const [userState, setUserState] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordsEqual, setPasswordsEqual] = useState(true);
+  const [passwordIsBlank, setPasswordIsBlank] = useState(false);
+
+  async function handleCreateAccount() {
+    if(password !== '' && confirmPassword !== ''){
+      if(password === confirmPassword) {
+        await fetch('http://localhost:3001/createUser', {
+          method: 'POST',
+          mode: 'cors',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            name: userName,
+            phoneNumber: userPhoneNumber,
+            city: userCity,
+            state: userState,
+            email: userEmail,
+            pass: password
+          })
+        })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          navigate('/');
+        });
+      } else {
+        setPasswordsEqual(false);
+        setPasswordIsBlank(false);
+      }
+    } else {
+      setPasswordsEqual(false);
+      setPasswordIsBlank(true);
+    }
+    
+  }
+
+  function handleCancel() {
+    navigate('/');
+  }
+
+  // Handle input changes
+  function handleSetUserName(event) {setUserName(event.target.value)}
+  function handleSetUserPhoneNumber(event) {setUserPhoneNumber(event.target.value)}
+  function handleSetUserCity(event) {setUserCity(event.target.value)}
+  function handleSetUserState(event) {setUserState(event.target.value)}
+  function handleSetUserEmail(event) {setUserEmail(event.target.value)}
+  function handleSetPassword(event) {setPassword(event.target.value)}
+  function handleSetConfirmPassword(event) {setConfirmPassword(event.target.value)}
+
   return (
     <div className='CreateAccount'>
       <h2 className='CreateAccount__h2'>Register</h2>
       <form>
-        <input id='register-name' className='CreateAccount__form__input' type='text' placeholder='Name' />
-        <input id='register-phone' className='CreateAccount__form__input' type='text' placeholder='Phone' />
-        <input id='register-city' className='CreateAccount__form__input' type='text' placeholder='City' />
-        <select id='register-state' name='state' className='CreateAccount__form__input'>
+        <input id='register-name' className='CreateAccount__form__input' type='text' onChange={handleSetUserName} placeholder='Name' />
+        <input id='register-phone' className='CreateAccount__form__input' type='text' onChange={handleSetUserPhoneNumber} placeholder='Phone' />
+        <input id='register-city' className='CreateAccount__form__input' type='text' onChange={handleSetUserCity} placeholder='City' />
+        <select id='register-state' name='state' className='CreateAccount__form__input' onChange={handleSetUserState}>
           <option value="Alabama">Alabama</option>
           <option value="Alaska">Alaska</option>
           <option value="Arizona">Arizona</option>
@@ -59,12 +120,17 @@ function CreateAccount(props) {
           <option value="Wisconsin">Wisconsin</option>
           <option value="Wyoming">Wyoming</option>
         </select>
-        <input id='register-email' className='CreateAccount__form__input' type='text' placeholder='Email' />
-        <input id='register-password' className='CreateAccount__form__input' type='text' placeholder='Password' />
-        <input id='register-confirmPasssword' className='CreateAccount__form__input' type='text' placeholder='Confirm Password' />
+        <input id='register-email' className='CreateAccount__form__input' type='text' onChange={handleSetUserEmail} placeholder='Email' />
+        <input id='register-password' className='CreateAccount__form__input' type='text' onChange={handleSetPassword} placeholder='Password' />
+        <input id='register-confirmPasssword' className='CreateAccount__form__input' type='text' onChange={handleSetConfirmPassword} placeholder='Confirm Password' />
       </form>
-      <button type='submit' className='CreateAccount__create-btn'>Create Account</button>
-      <button type='submit' className='CreateAccount__cancel-btn'>Cancel</button>
+      <p 
+        className='CreateAccount__error'
+        style={{display: (passwordsEqual) ? 'none' : 'block'}}
+        >{(passwordIsBlank) ? 'Passwords cannot be blank' : 'Passwords do not match'}
+      </p>
+      <button type='submit' className='CreateAccount__create-btn' onClick={handleCreateAccount}>Create Account</button>
+      <button type='submit' className='CreateAccount__cancel-btn' onClick={handleCancel}>Cancel</button>
     </div>
   );
 }
