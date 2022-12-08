@@ -8,6 +8,7 @@ function Login() {
   const [password, setPassword] = useState('');
   const [isBlank, setIsBlank] = useState(true);
   const [didTry, setDidTry] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -20,6 +21,10 @@ function Login() {
 
   function handleSetPassword(event) {
     setPassword(event.target.value);
+  }
+
+  function handleShowPassword() {
+    showPassword ? setShowPassword(false) : setShowPassword(true)
   }
 
   async function sendLogin() {
@@ -72,8 +77,14 @@ function Login() {
         <h2 className='Login__h2'>Login</h2>
         <form className='Login__form'>
           <input id='login-email' className='Login__form__input' onChange={handleSetEmail} type='text' placeholder='Email' />
-          <input id='login-password' className='Login__form__input' onChange={handleSetPassword} type='text' placeholder='Password' />
+          <input 
+            id='login-password'
+            className='Login__form__input'
+            onChange={handleSetPassword}
+            type={(showPassword) ? 'text' : 'password'}
+            placeholder='Password' />
         </form>
+        <button className='Login__form__p' onClick={handleShowPassword}>Show Password</button>
         <p 
           className='Login__error' 
           style={{display: didTry ? 'inline-block' : 'none'}}

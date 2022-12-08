@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 
+import AddNewUser from './pages/AddNewUser';
 import CreateAccount from './pages/CreateAccount';
 import ErrorPage from './pages/ErrorPage';
 import Login from './pages/Login';
@@ -10,9 +11,9 @@ import UserUpdate from './pages/UserUpdate';
 function App() {
   return (
     <div className='App'>
-      
       <div className='content'>
         <Routes>
+          <Route path='/addnewuser' element={<AddNewUser />} />
           <Route path='/createaccount' element={<CreateAccount />} />
           <Route path='/userinfo' element={<UserInfo />} />
           <Route path='/userupdate' element={<UserUpdate />} />

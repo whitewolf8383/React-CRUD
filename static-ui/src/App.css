@@ -88,6 +88,16 @@
   margin-bottom: 10px;
 }
 
+.Login__form__p {
+  background-color: transparent;
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
 .CreateAccount__create-btn {
   background-color: #32BD40;
   border: 1px solid rgba(0,0,0,0.75);

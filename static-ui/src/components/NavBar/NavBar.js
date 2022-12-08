@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 function NavBar(props) {
   const [userEmail, setUserEmail] = useState(props.userEmail);
   const [loggedIn, setLoggedIn] = useState(props.loggedIn);
-  const [user, setUser] = useState({});
 
   const navigate = useNavigate();
 

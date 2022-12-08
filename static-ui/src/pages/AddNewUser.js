@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import NavBar from '../components/NavBar/NavBar';
 
-function CreateAccount(props) {
+function AddNewUser(props) {
   const navigate = useNavigate();
   
   const [userName, setUserName] = useState('');
@@ -17,7 +17,7 @@ function CreateAccount(props) {
   const [passwordIsBlank, setPasswordIsBlank] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
 
-  function handleCreateAccount() {
+  async function handleCreateAccount() {
     if(password !== '' && confirmPassword !== ''){
       if(password === confirmPassword) {
         const requestOptions = {
@@ -37,7 +37,7 @@ function CreateAccount(props) {
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
-          navigate('/');
+          navigate('/userinfo');
         });
       } else {
         setPasswordsEqual(false);
@@ -47,7 +47,6 @@ function CreateAccount(props) {
       setPasswordsEqual(false);
       setPasswordIsBlank(true);
     }
-    
   }
 
   function handleShowPassword() {
@@ -55,7 +54,7 @@ function CreateAccount(props) {
   }
 
   function handleCancel() {
-    navigate('/');
+    navigate('/userinfo');
   }
 
   // Handle input changes
@@ -69,9 +68,9 @@ function CreateAccount(props) {
 
   return (
     <>
-      <NavBar loggedIn={false} />
+      <NavBar userEmail={userEmail} loggedIn={true} />
       <div className='CreateAccount'>
-        <h2 className='CreateAccount__h2'>Register</h2>
+        <h2 className='CreateAccount__h2'>Create New User</h2>
         <form>
           <input id='register-name' className='CreateAccount__form__input' type='text' onChange={handleSetUserName} placeholder='Name' />
           <input id='register-phone' className='CreateAccount__form__input' type='text' onChange={handleSetUserPhoneNumber} placeholder='Phone' />
@@ -144,4 +143,4 @@ function CreateAccount(props) {
   );
 }
 
-export default CreateAccount;
+export default AddNewUser;
